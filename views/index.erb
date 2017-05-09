@@ -1,0 +1,33 @@
+<div class="col-md-6">
+  <form action="/purchase" method="post">
+    <h4>Buy Items</h4>
+    <div class="input-group">
+      <% @items.each() do |item| %>
+        <input type="checkbox" name="item_ids[]" aria-label="..." value="<%= item.id() %>">&nbsp;&nbsp;<%= item.name() %>&nbsp;&nbsp;<%= convert_to_money(item.price()) %>
+        <br>
+      <% end %>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="customer"><h4>Customer name</h4></label>
+      <input class="form-control" type="text" name="customer">
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Purchase old stuff</button>
+  </form>
+</div>
+<div class="col-md-6">
+  <h4>Add Item</h4>
+  <br>
+  <form action="/item" method="post">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" name="name">
+      <br>
+      <label for="price">Price</label>
+      <input class="form-control" type="number" name="price">
+      <br>
+      <button class="btn btn-primary" type="submit">Add</button>
+    </div>
+  </form>
+</div>

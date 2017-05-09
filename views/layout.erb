@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
+    <meta charset="utf-8">
+    <title>Antique POS</title>
+  </head>
+  <body>
+    <div class="container padding-top">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Antique POS</h3>
+        </div>
+        <div class="panel-body">
+          <%= yield %>
+        </div>
+      </div>
+      <form action="/clear_all" method="post" class="inline-block">
+        <input type="hidden" name="_method" value="delete">
+        <button class="btn btn-danger inline-block" type="submit" name="clear_all">Clear Database</button>
+      </form>
+    </div>
+  </body>
+</html>
