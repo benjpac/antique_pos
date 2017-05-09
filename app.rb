@@ -12,14 +12,16 @@ end
 post '/item' do
   name = params[:name]
   price = convert_to_cents(params[:price])
-  item = Item.create({:name => name, :price => price})
-  # if item.save()
-  #
-  # end
+  @item = Item.create({:name => name, :price => price})
+  if @item.save()
+    @items = Item.all()
+    @purchases = Purchase.all()
+    erb :index
+  else
+    erb :errors
+  end
 
-  @items = Item.all()
-  @purchases = Purchase.all()
-  erb :index
+
 end
 
 post '/purchase' do

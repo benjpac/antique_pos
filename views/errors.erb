@@ -1,0 +1,9 @@
+<h2>You messed up, my friend</h2>
+
+<ul>
+  <% @item.errors().full_messages().each() do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+<h5><a href="/" >Return to main page to try again</a></h5>
