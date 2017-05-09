@@ -1,0 +1,22 @@
+<div class="col-md-6">
+  <h2>Your Reciept</h2>
+  <ul>
+    <% @purchase.items().each() do |item| %>
+      <li><%= item.name() %>, <%= convert_to_money(item.price()) %></li>
+    <% end %>
+  </ul>
+  <br>
+  <h4>Total: <%= convert_to_money(@purchase.total_price()) %></h4>
+</div>
+<div class="col-md-6">
+  <h2>Items to return</h2>
+  <form action="/return" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <% @purchase.items().each() do |item| %>
+      <input type="checkbox" name="item_ids[]" aria-label="..." value="<%= item.id() %>">&nbsp;&nbsp;<%= item.name() %>&nbsp;&nbsp;<%= convert_to_money(item.price()) %>
+      <br>
+    <% end %>
+    <br>
+    <button type="submit" class="btn btn-primary">Return the items</button>
+  </form>
+</div>

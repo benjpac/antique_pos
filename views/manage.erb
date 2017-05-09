@@ -1,0 +1,25 @@
+<div class="col-md-6">
+  <form action="/find_purchases_by_date" method="post" class="inline-block">
+    <div class="form-group">
+      <label for="start_date">Start Date</label>
+      <input type="date" name="start_date">
+    </div>
+    <div class="form-group">
+      <label for="end_date">End Date</label>
+      <input type="date" name="end_date">
+    </div>
+    <button class="btn btn-primary inline-block" type="submit"> Search</button>
+  </form>
+  <br>
+  <form action="/clear_all" method="post" class="inline-block">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn btn-danger inline-block" type="submit" name="clear_all">Clear Database</button>
+  </form>
+</div>
+<div class="col-md-6">
+  <% if @purchase_range != nil %>
+    <% @purchase_range.each() do |purchase| %>
+      <p><a href="/receipt/<%= purchase.id() %>"><%= purchase.customer() %>, <%= convert_to_money(purchase.total_price()) %></a></p>
+    <% end %>
+  <% end %>
+</div>
